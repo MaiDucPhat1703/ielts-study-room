@@ -14,4 +14,4 @@ Video và tài liệu lấy từ Drive theo quyền xem gốc. Nếu phần nhú
 - `app.js` xử lý lộ trình, lọc bài, điều hướng, tiến độ, ghi chú và luyện tập.
 - `course.js` là danh mục liên kết. Video và tài liệu gốc được lưu trên Drive theo quyền hiện có.
 
-Repository hiện ở chế độ riêng tư. Mục GitHub Pages của tài khoản yêu cầu nâng cấp hoặc chuyển repo sang công khai.
+Repository công khai và dùng GitHub Pages để xuất bản trang học từ nhánh `main`. Quyền xem từng video và tài liệu được quản lý trên Google Drive.
