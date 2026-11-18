@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>IELTS Study Room</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="course.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#lesson-title">Đến bài học</a>
+<header class="top">
+  <a class="brand" href="./index.html"><span class="brand-icon" aria-hidden="true">↗</span> IELTS Study Room</a>
+  <div class="top-progress">
+    <label for="progress">Tiến độ <b id="progress-text">0%</b></label>
+    <progress id="progress" max="100" value="0"></progress>
+  </div>
+  <button id="resume" type="button">Học tiếp</button>
+</header>
+<main class="layout">
+  <section class="lesson" aria-labelledby="lesson-title">
+    <p id="breadcrumb" class="eyebrow"></p>
+    <h1 id="lesson-title" tabindex="-1">Đang tải bài học…</h1>
+    <div class="player" id="player"></div>
+    <div class="controls">
+      <button id="previous" type="button">← Bài trước</button>
+      <button id="done" class="complete" type="button" aria-pressed="false">Đánh dấu đã học</button>
+      <button id="next" type="button">Bài tiếp theo →</button>
+    </div>
+    <div class="details">
+      <section aria-labelledby="materials-heading"><h2 id="materials-heading">Tài liệu</h2><ul id="materials"></ul></section>
+      <section><label class="notes-label" for="notes">Ghi chú của bạn</label><textarea id="notes" rows="4" placeholder="Lưu ý cần ôn lại sau bài này…"></textarea><p class="muted">Ghi chú và tiến độ được lưu trên trình duyệt này.</p></section>
+    </div>
+    <p class="sr-only" id="feedback" role="status"></p>
+  </section>
+  <aside class="outline" aria-label="Lộ trình khóa học">
+    <div class="outline-head">
+      <h2>Lộ trình học</h2><p id="stats" class="muted"></p>
+      <label class="sr-only" for="search">Tìm bài học</label>
+      <input id="search" type="search" placeholder="Tìm theo tên bài hoặc chương…">
+      <label class="filter"><input id="unfinished" type="checkbox"> Chỉ hiện bài chưa học</label>
+    </div>
+    <div id="chapters"></div>
+  </aside>
+</main>
+<noscript>Bật JavaScript để dùng mục lục và lưu tiến độ.</noscript>
+</body>
+</html>
