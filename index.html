@@ -7,6 +7,7 @@
   <title>IELTS Study Room</title>
   <link rel="stylesheet" href="styles.css">
   <script defer src="course.js"></script>
+  <script defer src="practice.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
@@ -21,7 +22,7 @@
 </header>
 <main class="layout">
   <section class="lesson" aria-labelledby="lesson-title">
-    <p id="breadcrumb" class="eyebrow"></p>
+    <div class="lesson-meta"><p id="breadcrumb" class="eyebrow"></p><span id="lesson-state" class="status"></span></div>
     <h1 id="lesson-title" tabindex="-1">Đang tải bài học…</h1>
     <div class="player" id="player"></div>
     <div class="controls">
@@ -34,13 +35,30 @@
       <section><label class="notes-label" for="notes">Ghi chú của bạn</label><textarea id="notes" rows="4" placeholder="Lưu ý cần ôn lại sau bài này…"></textarea><p class="muted">Ghi chú và tiến độ được lưu trên trình duyệt này.</p></section>
     </div>
     <section class="practice" aria-labelledby="practice-title">
-      <h2 id="practice-title">Luyện tập</h2>
-      <form id="practice-form">
-        <fieldset id="practice-options"></fieldset>
-        <button type="submit">Kiểm tra đáp án</button>
+      <h2 id="practice-title">Ôn theo video</h2>
+      <p id="practice-source" class="muted"></p>
+      <div id="caption-import" hidden>
+        <label for="caption-file">Chọn phụ đề của bài này (.srt hoặc .vtt)</label>
+        <input id="caption-file" type="file" accept=".srt,.vtt">
+        <p class="muted">Tải phụ đề từ mục Tài liệu rồi chọn tệp ở đây để tạo bài ôn từ lời giảng.</p>
+      </div>
+      <form id="practice-form" hidden>
+        <div id="practice-options"></div>
+        <button type="submit">Nộp bài trắc nghiệm</button>
         <p id="practice-feedback" role="status"></p>
       </form>
-      <p id="practice-task" class="muted"></p>
+      <form id="written-form" hidden>
+        <h3>Bài tập tự luận</h3>
+        <p id="practice-task"></p>
+        <label class="sr-only" for="practice-answer">Bài làm của bạn</label>
+        <textarea id="practice-answer" rows="5" maxlength="12000" required placeholder="Viết câu trả lời ở đây…"></textarea>
+        <div class="practice-actions">
+          <button id="grade-answer" type="submit">Nộp để AI chấm</button>
+          <button id="copy-answer" type="button">Sao chép để chấm trong ChatGPT</button>
+        </div>
+        <p id="grade-feedback" role="status"></p>
+        <a id="open-chatgpt" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" hidden>Mở ChatGPT ↗</a>
+      </form>
     </section>
     <p class="sr-only" id="feedback" role="status"></p>
   </section>
@@ -49,7 +67,13 @@
       <h2>Lộ trình học</h2><p id="stats" class="muted"></p>
       <label class="sr-only" for="search">Tìm bài học</label>
       <input id="search" type="search" placeholder="Tìm theo tên bài hoặc chương…">
-      <label class="filter"><input id="unfinished" type="checkbox"> Chỉ hiện bài chưa học</label>
+      <label class="sr-only" for="lesson-filter">Lọc theo trạng thái</label>
+      <select id="lesson-filter">
+        <option value="all">Tất cả trạng thái</option>
+        <option value="new">Mới</option>
+        <option value="started">Đang học</option>
+        <option value="done">Đã xong</option>
+      </select>
     </div>
     <div id="chapters"></div>
   </aside>
